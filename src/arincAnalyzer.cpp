@@ -32,12 +32,13 @@ void arincAnalyzer::WorkerThread()
 		mSerial->AdvanceToNextEdge();
 
 	U32 samples_per_bit = mSampleRateHz / mSettings->mBitRate;
-	U32 samples_to_first_center_of_first_data_bit = U32( 1.5 * double( mSampleRateHz ) / double( mSettings->mBitRate ) );
+	//U32 samples_to_first_center_of_first_data_bit = U32( 1.5 * double( mSampleRateHz ) / double( mSettings->mBitRate ) );
+	U32 samples_to_first_center_of_first_data_bit = U32( 0.5 * double( mSampleRateHz ) / double( mSettings->mBitRate ) );
 
 	for( ; ; )
 	{
-		U8 data = 0;
-		U8 mask = 1 << 7;
+		U32 data = 0;
+		U32 mask = 1 << 31;
 		
 		mSerial->AdvanceToNextEdge(); //falling edge -- beginning of the start bit
 
@@ -45,7 +46,8 @@ void arincAnalyzer::WorkerThread()
 
 		mSerial->Advance( samples_to_first_center_of_first_data_bit );
 
-		for( U32 i=0; i<8; i++ )
+//		for( U32 i=0; i<8; i++ )
+		for( U32 i=0; i<32; i++ )
 		{
 			//let's put a dot exactly where we sample this bit:
 			mResults->AddMarker( mSerial->GetSampleNumber(), AnalyzerResults::Dot, mSettings->mInputChannel );

@@ -4,7 +4,7 @@
 
 arincAnalyzerSettings::arincAnalyzerSettings()
 :	mInputChannel( UNDEFINED_CHANNEL ),
-	mBitRate( 9600 )
+	mBitRate( 100000 )
 {
 	mInputChannelInterface.reset( new AnalyzerSettingInterfaceChannel() );
 	mInputChannelInterface->SetTitleAndTooltip( "Serial", "Standard Arinc 429" );
