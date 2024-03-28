@@ -16,7 +16,9 @@ cmake --build .
 
 ### copy to your Saleae plugin folder
 
-```cp -a Analyzers/libarinc429Analyzer.so ~/saleae/myAnalyzers/ 
+```bash
+cp -a Analyzers/libarinc429Analyzer.so ~/saleae/myAnalyzers/ 
 ```
 
+### screenshot
 ![screenshot](arinc429analyzer.png)
